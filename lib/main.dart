@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fogysafe/map.dart';
 
+
+//https://script.google.com/macros/s/AKfycbzNmTNRryD4q0Bo666_lufNk2CEA97L9qgOVwX95Y0RBkFMmqQjqrJuC0O9eEcbSyoS2A/exec
+
+
 void main() {
   runApp(const MyApp());
 }

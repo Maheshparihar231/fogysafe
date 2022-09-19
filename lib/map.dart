@@ -1,9 +1,11 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_final_fields, prefer_const_constructors, duplicate_ignore, camel_case_types, unnecessary_new, unnecessary_this, unnecessary_null_comparison, avoid_print
+// ignore_for_file: use_key_in_widget_constructors, prefer_final_fields, prefer_const_constructors, duplicate_ignore, camel_case_types, unnecessary_new, unnecessary_this, unnecessary_null_comparison, avoid_print, unused_local_variable
 
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fogysafe/main.dart';
+import 'package:fogysafe/mapdata.dart';
+import 'package:fogysafe/sender.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
@@ -55,9 +57,22 @@ class mapState extends State<map> {
 
   void sendlocation(double lat, double long) {
     DateTime time = DateTime.now();
-    main();
+    if (condition) {
+      print("latilongi xdlemon = $lat , $long ,${time.toString()}");
+
+      FeedbackForm feedbackForm = FeedbackForm(
+        lat.toString(),
+        long.toString(),
+        time.toString(),
+      );
+
+      FormController formController = FormController((String response) {
+        print("Response : $response");
+      });
+
+      formController.submitForm(feedbackForm);
+    }
     //time = Timer.periodic(duration, callback) Duration(seconds: 1);
-    print("latilongi xdlemon = $lat , $long ,${time.toString()}");
   }
 
   static CameraPosition _kGooglePlex = CameraPosition(
