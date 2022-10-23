@@ -1,6 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_final_fields, prefer_const_constructors, duplicate_ignore, camel_case_types, unnecessary_new, unnecessary_this, unnecessary_null_comparison, avoid_print, unused_local_variable
 
 import 'dart:async';
+import 'dart:math';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fogysafe/main.dart';
@@ -22,6 +24,7 @@ class mapState extends State<map> {
   final Set<Marker> _markers = {};
   final Set<Circle> _circle = {};
   bool condition = false;
+  double lons=0, lats=0;
   // ignore: prefer_const_constructors
 
   Future<Uint8List> getMarker() async {
@@ -33,6 +36,7 @@ class mapState extends State<map> {
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
     LatLng latlng = LatLng(newLocalData.latitude!, newLocalData.longitude!);
     sendlocation(newLocalData.latitude!, newLocalData.longitude!);
+    //showalert(newLocalData.latitude!, newLocalData.longitude!);
     //print("latilongi xdlemon = ${latlng.latitude} , ${latlng.longitude} ");
     this.setState(() {
       _markers.add(Marker(
@@ -58,8 +62,7 @@ class mapState extends State<map> {
   void sendlocation(double lat, double long) {
     DateTime time = DateTime.now();
     if (condition) {
-      print("latilongi xdlemon = $lat , $long ,${time.toString()}");
-
+      //print("latilongi xdlemon = $lat , $long ,${time.toString()}");
       FeedbackForm feedbackForm = FeedbackForm(
         lat.toString(),
         long.toString(),
@@ -118,7 +121,41 @@ class mapState extends State<map> {
     }
     super.dispose();
   }
+/*
+  void appstate(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        print("app in resumed");
+        break;
+      case AppLifecycleState.inactive:
+        print("app in inactive");
+        break;
+      case AppLifecycleState.paused:
+        print("app in paused");
+        break;
+      case AppLifecycleState.detached:
+        print("app in detached");
+        break;
+    }
+  }
 
+  void showalert(double latc, double longc) {
+    double distance = 0;
+    var p = 0.017453292519943295;
+    var a = 0.5 -
+        cos((lats - latc) * p) / 2 +
+        cos(latc * p) * cos(lats * p) * (1 - cos((lons - longc) * p)) / 2;
+    distance = 12742 * asin(sqrt(a));
+    if (condition && distance < 1) {
+      AwesomeDialog(
+              context: context,
+              title: "title",
+              desc: "des",
+              btnOkOnPress: () {})
+          .show();
+    }
+  }
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,8 +175,25 @@ class mapState extends State<map> {
         onPressed: () {
           getCurrentLocation();
           if (condition) {
+            AwesomeDialog(
+              context: context,
+              title: "Stopped",
+              //desc: "des",
+              dialogType: DialogType.warning,
+              animType: AnimType.topSlide,
+              btnOkColor: Colors.red,
+              btnOkOnPress: () {},
+            ).show();
             condition = false;
           } else {
+            AwesomeDialog(
+              context: context,
+              title: "Sending...",
+              //desc: "des",
+              dialogType: DialogType.success,
+              animType: AnimType.topSlide,
+              btnOkOnPress: () {},
+            ).show();
             condition = true;
           }
           //if (!condition) condition = true;
