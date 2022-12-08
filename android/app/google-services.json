@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478539405159",
+    "project_id": "fogsafe-9dc73",
+    "storage_bucket": "fogsafe-9dc73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478539405159:android:c77c1b58862e52b2cb41c2",
+        "android_client_info": {
+          "package_name": "com.example.fogysafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478539405159-g0ks6nedvqoh6n17fdjamnv9proopsur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhIPFRXGkuPdX1dp9Lft6raBXl_UDFZAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478539405159-g0ks6nedvqoh6n17fdjamnv9proopsur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
