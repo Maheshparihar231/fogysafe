@@ -17,7 +17,6 @@ import 'package:fogysafe/mapdata.dart';
 import 'package:fogysafe/sender.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'alert.dart';
 
 //https://script.google.com/macros/s/AKfycbzNmTNRryD4q0Bo666_lufNk2CEA97L9qgOVwX95Y0RBkFMmqQjqrJuC0O9eEcbSyoS2A/exec
 
