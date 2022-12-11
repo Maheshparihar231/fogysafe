@@ -1,3 +1,5 @@
+// ignore_for_file: duplicate_import, unused_import
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -259,8 +261,9 @@ class mapState extends State<map> {
           _controller = controller;
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
+        //extendedPadding: EdgeInsets.all(value),
         onPressed: () {
           getCurrentLocation();
           if (condition) {
